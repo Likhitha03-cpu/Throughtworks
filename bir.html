@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+    body{
+             
+             background-color: rgb(227, 135, 166);
+             text-align: center;
+             text-transform: capitalize;
+            
+             display: block;
+             padding: 250px;
+             font-family: Arial, Helvetica, sans-serif;
+             display:flex;
+             justify-content:center;
+             align-items:center;
+             
+
+
+
+        }
+       #d1{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+
+}
+        #d4,#d5{
+            border:5px solid black;
+            border-width: 5px;
+            padding: 30px;
+            width:fit-content;
+            text-align: center;
+            background-color: pink;
+            border-radius: 15px;
+          
+        }
+       #buttons{
+display:flex;
+gap:15px;
+justify-content:center;
+margin-top:10px;
+}
+#btn{
+    background-color: rgb(173, 40, 84);
+    padding:10px;
+    border-radius: 10px;
+}
+#btn2,#close{
+     background-color: rgb(173, 40, 84);
+    padding:10px;
+    border-radius: 10px;
+
+}
+          #gifts{
+            display: flex;
+            justify-content: space-around;
+          }
+          #gifts button{
+font-size:40px;
+background:none;
+border:none;
+}
+        </style>
+
+</head>
+<body>
+    <div id="d1"></div>
+    <script type="text/babel">
+       var c= <>
+         <div id="d4">
+            <h1>18th Birthday 🥳🥳</h1>
+    
+        </div>
+        <div id="d5">
+        <h1>🥳Happy Birthday🥳</h1>
+        <h2>Welcome Likki😍</h2>
+        <p>Today is your special day!</p>
+        <button id="btn" onClick={page2}>TAP to Continue</button>
+        </div>
+       
+        <div id="d4">
+            <h1 >📆MARCH 11 2008</h1>
+            </div>
+            </>
+
+         ReactDOM.render(c, document.getElementById("d1"));
+ function page2() {
+    var c=<div>
+        <h1>HAPPY BIRTHDAY LIKKI</h1>
+        <p id="blow">🕯️🕯️🕯️</p>
+        <h1 id="cake">🎂</h1>
+<div id="buttons">
+<button id="btn" onClick={blow}>Blow the candles</button>
+<button id="btn2" disabled onClick={cut}>Cut the cake</button>
+</div>
+</div>
+    ReactDOM.render(c, document.getElementById("d5"));
+ }
+ function blow(){
+    document.getElementById("blow").innerText = "Make a Wish 🎈";
+    var c=document.getElementById("btn2");
+    c.disabled=false;
+    c.onclick=cut
+
+ var btn = document.getElementById("btn");
+btn.innerText = "Click me";
+btn.onclick =page3;
+btn.disabled=true;
+}
+ function cut(){
+    document.getElementById("cake").innerText="🍰"
+ var cutBtn = document.getElementById("btn2");
+    cutBtn.remove(); 
+    document.getElementById("btn").disabled=false
+    
+ }
+ function page3(){
+    var c= <div>
+        <h1 > Surprise Message</h1>
+          <h2 id="gift"> Choose which you want</h2>
+            <div id="gifts">
+                <button id="g1"onClick={()=>gift(1)}>🎁</button>
+                  <button id="g2"onClick={()=>gift(2)}>🎁</button>
+                  <button id="g3"onClick={()=>gift(3)}>🎁</button>
+                </div>
+              <br/><button id ="close" disabled>Close</button>
+        </div>
+    ReactDOM.render(c, document.getElementById("d5"));
+ }
+    function closePage(){
+        var c=<div>
+            <h1>🎉 THANK YOU FOR CELEBRATING 🎉</h1>
+            <h3>💖 HAVE A WONDERFUL YEAR 💖</h3>
+            </div>
+                ReactDOM.render(c, document.getElementById("d5")); 
+    }
+    function gift(i){
+        var msg=""
+    document.getElementById("g"+i).innerText ="📦" 
+    msg=i==1 ? "🎉 Believe in yourself. Today will be amazing!":
+        i==2 ?"⭐ Keep smiling and shining like a star!" :
+        i==3?"💖 Your future is bright. Enjoy your special day!":
+        "";
+         document.getElementById("gift").innerText=msg
+          document.getElementById("g1").disabled = true;
+    document.getElementById("g2").disabled = true;
+    document.getElementById("g3").disabled = true;
+    var c=document.getElementById("close")
+    c.disabled=false;
+    c.onclick=closePage;
+}
+    
+ 
+    </script>
+    
+</body>
+</html>
